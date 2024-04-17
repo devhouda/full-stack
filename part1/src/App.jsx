@@ -5,16 +5,22 @@ const Button = ({ text, onClick }) => {
 };
 
 const Statistics = ({ good, neutral, bad }) => {
-  return (
-    <>
-      <p>good {good} </p>
-      <p>neutral {neutral} </p>
-      <p>bad {bad} </p>
-      <p>all {good + neutral + bad} </p>
-      <p>average {(good + neutral * 0 + bad * -1) / (good + neutral + bad)} </p>
-      <p>positive {(good * 100) / (good + neutral + bad)} %</p>
-    </>
-  );
+  if (good === 0 && neutral === 0 && bad === 0) {
+    return <p>No feedback given</p>;
+  } else {
+    return (
+      <>
+        <p>good {good} </p>
+        <p>neutral {neutral} </p>
+        <p>bad {bad} </p>
+        <p>all {good + neutral + bad} </p>
+        <p>
+          average {(good + neutral * 0 + bad * -1) / (good + neutral + bad)}{" "}
+        </p>
+        <p>positive {(good * 100) / (good + neutral + bad)} %</p>
+      </>
+    );
+  }
 };
 
 const App = () => {
