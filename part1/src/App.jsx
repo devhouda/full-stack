@@ -7,16 +7,21 @@ const Button = ({ text, onClick }) => {
 const StatisticLine = ({ text, value }) => {
   if (text === "positive") {
     return (
-      <p>
-        {text} {value}
-        {"%"}
-      </p>
+      <tbody>
+        <tr>
+          <td>{text}</td>
+          <td>{value} %</td>
+        </tr>
+      </tbody>
     );
   } else {
     return (
-      <p>
-        {text} {value}{" "}
-      </p>
+      <tbody>
+        <tr>
+          <td>{text}</td>
+          <td>{value}</td>
+        </tr>
+      </tbody>
     );
   }
 };
@@ -26,7 +31,7 @@ const Statistics = ({ good, neutral, bad }) => {
     return <p>No feedback given</p>;
   } else {
     return (
-      <>
+      <table>
         <StatisticLine text="good" value={good} />
         <StatisticLine text="neutral" value={neutral} />
         <StatisticLine text="bad" value={bad} />
@@ -39,7 +44,7 @@ const Statistics = ({ good, neutral, bad }) => {
           text="positive"
           value={(good * 100) / (good + neutral + bad)}
         />
-      </>
+      </table>
     );
   }
 };
