@@ -1,65 +1,35 @@
-const Header = (props) => {
-  return <h1>{props.course}</h1>;
+import { useState } from "react";
+
+const Button = ({ text, onClick }) => {
+  return <button onClick={onClick}>{text}</button>;
 };
 
-const Content = (props) => {
-  return (
-    <div>
-      <Part part1={props.parts[0].name} exercises1={props.parts[0].exercises} />
-      <Part part2={props.parts[1].name} exercises2={props.parts[1].exercises} />
-      <Part part3={props.parts[2].name} exercises3={props.parts[2].exercises} />
-    </div>
-  );
-};
-
-const Part = (props) => {
-  return (
-    <>
-      <p>
-        {props.part1} {props.exercises1}
-      </p>
-      <p>
-        {props.part2} {props.exercises2}
-      </p>
-      <p>
-        {props.part3} {props.exercises3}
-      </p>
-    </>
-  );
-};
-
-const Total = (props) => {
-  return (
-    <p>
-      Number of exercises{" "}
-      {props.exercises1 + props.exercises2 + props.exercises3}
-    </p>
-  );
-};
 const App = () => {
-  const course = {
-    name: "Half Stack application development",
-    parts: [
-      {
-        name: "Fundamentals of React",
-        exercises: 10,
-      },
-      {
-        name: "Using props to pass data",
-        exercises: 7,
-      },
-      {
-        name: "State of a component",
-        exercises: 14,
-      },
-    ],
+  // save clicks of each button to its own state
+  const [good, setGood] = useState(0);
+  const [neutral, setNeutral] = useState(0);
+  const [bad, setBad] = useState(0);
+
+  const handleGood = () => {
+    setGood(good + 1);
+  };
+  const handleNeutral = () => {
+    setNeutral(neutral + 1);
+  };
+  const handleBad = () => {
+    setBad(bad + 1);
   };
 
   return (
     <div>
-      <Header course={course.name} />
-      <Content parts={course.parts} />
-      <Total parts={course.parts} />
+      <h2>give feedback</h2>
+      <Button onClick={handleGood} text="good" />
+      <Button onClick={handleNeutral} text="neutral" />
+      <Button onClick={handleBad} text="bad" />
+      <h2>statistics</h2>
+      <p>good {good} </p>
+      <p>neutral {neutral} </p>
+      <p>bad {bad} </p>
     </div>
   );
 };
