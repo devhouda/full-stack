@@ -13,7 +13,7 @@ const App = () => {
   ];
 
   const [selected, setSelected] = useState(0);
-  const [votes, setVotes] = useState(Array(7).fill(0));
+  const [votes, setVotes] = useState(Array(8).fill(0));
 
   const handleSelection = () => {
     let random = Math.floor(Math.random() * 7 + 1);
@@ -21,9 +21,9 @@ const App = () => {
   };
 
   const handleVote = () => {
-    let copy = [...votes];
-    setVotes((copy[selected] += 1));
-    console.log(votes);
+    const copy = [...votes];
+    copy[selected] += 1;
+    setVotes(copy);
   };
 
   return (
