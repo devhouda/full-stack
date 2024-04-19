@@ -1,3 +1,14 @@
+const Total = ({ course }) => {
+  let count = 0;
+  course.parts.forEach((el) => (count += el.exercises));
+  return (
+    <p>
+      total of {count}
+      exercises
+    </p>
+  );
+};
+
 const Course = ({ course }) => {
   return (
     <>
@@ -46,10 +57,20 @@ const App = () => {
         exercises: 14,
         id: 3,
       },
+      {
+        name: "Redux",
+        exercises: 11,
+        id: 4,
+      },
     ],
   };
 
-  return <Course course={course} />;
+  return (
+    <>
+      <Course course={course} />
+      <Total course={course} />
+    </>
+  );
 };
 
 export default App;
