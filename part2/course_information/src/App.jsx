@@ -1,3 +1,5 @@
+import Course from "./components/Course";
+
 const Total = ({ course }) => {
   let sum = 0;
   let sum_arr = [];
@@ -7,34 +9,6 @@ const Total = ({ course }) => {
   }, 0);
   total.forEach((el) => (sum += el));
   return <h3>total of {sum} exercises</h3>;
-};
-
-const Course = ({ course }) => {
-  return (
-    <>
-      <Header course={course} />
-      <Content parts={course.parts} />
-    </>
-  );
-};
-const Header = ({ course }) => {
-  return <h2>{course.name}</h2>;
-};
-const Content = ({ parts }) => {
-  return (
-    <>
-      {parts.map((part) => (
-        <Part name={part.name} exercises={part.exercises} key={part.id} />
-      ))}
-    </>
-  );
-};
-const Part = ({ name, exercises }) => {
-  return (
-    <p>
-      {name} {exercises}
-    </p>
-  );
 };
 
 const App = () => {
