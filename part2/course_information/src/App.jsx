@@ -1,12 +1,12 @@
 const Total = ({ course }) => {
-  let count = 0;
-  course.parts.forEach((el) => (count += el.exercises));
-  return (
-    <p>
-      total of {count}
-      exercises
-    </p>
-  );
+  let sum = 0;
+  let sum_arr = [];
+  let total = course.parts.reduce((s, p) => {
+    sum_arr.push(p.exercises);
+    return sum_arr;
+  }, 0);
+  total.forEach((el) => (sum += el));
+  return <p>total of {sum} exercises</p>;
 };
 
 const Course = ({ course }) => {
